@@ -18,6 +18,8 @@ class Activity: Identifiable{
     var beginTime: String = "10:00"
     var endTime: String = "12:00"
     var name: String = "Work"
+    
+    
     var weather: String = "Cloudy"
     var temp: String = "23"
     

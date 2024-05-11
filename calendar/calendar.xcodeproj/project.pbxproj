@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C7761E892BEF3D4000B2295C /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7761E882BEF3D4000B2295C /* WeatherData.swift */; };
+		C7761E8B2BEF3D6D00B2295C /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7761E8A2BEF3D6D00B2295C /* WeatherManager.swift */; };
 		C7C868962BEAFA6D00E7D1C4 /* calendarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C868952BEAFA6D00E7D1C4 /* calendarApp.swift */; };
 		C7C868982BEAFA6D00E7D1C4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C868972BEAFA6D00E7D1C4 /* ContentView.swift */; };
 		C7C8689A2BEAFA6F00E7D1C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7C868992BEAFA6F00E7D1C4 /* Assets.xcassets */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C7761E882BEF3D4000B2295C /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
+		C7761E8A2BEF3D6D00B2295C /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		C7C868922BEAFA6D00E7D1C4 /* calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7C868952BEAFA6D00E7D1C4 /* calendarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendarApp.swift; sourceTree = "<group>"; };
 		C7C868972BEAFA6D00E7D1C4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -84,6 +88,8 @@
 			isa = PBXGroup;
 			children = (
 				C7C868A52BEB03E900E7D1C4 /* ContentViewModel.swift */,
+				C7761E882BEF3D4000B2295C /* WeatherData.swift */,
+				C7761E8A2BEF3D6D00B2295C /* WeatherManager.swift */,
 				C7C868A92BEB7C0C00E7D1C4 /* Schedule.swift */,
 			);
 			path = Module;
@@ -159,7 +165,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7761E8B2BEF3D6D00B2295C /* WeatherManager.swift in Sources */,
 				C7C868982BEAFA6D00E7D1C4 /* ContentView.swift in Sources */,
+				C7761E892BEF3D4000B2295C /* WeatherData.swift in Sources */,
 				C7C868962BEAFA6D00E7D1C4 /* calendarApp.swift in Sources */,
 				C7C868AA2BEB7C0C00E7D1C4 /* Schedule.swift in Sources */,
 				C7C868A62BEB03E900E7D1C4 /* ContentViewModel.swift in Sources */,
@@ -296,6 +304,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"calendar/Preview Content\"";
+				DEVELOPMENT_TEAM = 4RG9MX354N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -324,6 +333,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"calendar/Preview Content\"";
+				DEVELOPMENT_TEAM = 4RG9MX354N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
