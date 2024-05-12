@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct CalendarView: View {
+    @Environment(\.presentationMode) var presentationMode
     
     @State private var color: Color = .green // Changed color to a valid SwiftUI color
-    @State private var date = Date()
+    @State var date: Date
+    @ObservedObject var contentViewModel: ContentViewModel
     let daysOfWeek = Date.capitalizedFirstLettersOfWeekdays
     let columns = Array(repeating: GridItem(.flexible()), count: 7)
     @State private var days: [Date] = []
@@ -47,12 +49,16 @@ struct CalendarView: View {
                                     .foregroundColor(
                                         
                                         //Background for current day
-                                        Date.now.startOfDay == day.startOfDay
+                                        date.startOfDay == day.startOfDay
                                         ? Color.red.opacity(0.2):
                                             
                                         // Background modifies for each date
                                         color.opacity(0.2))
                             )
+                        .onTapGesture {
+                            contentViewModel.date = day.startOfDay
+                            presentationMode.wrappedValue.dismiss()
+                        }
                     }
                 }
             }
@@ -60,7 +66,7 @@ struct CalendarView: View {
             .onAppear {
                 days = date.calendarDisplayDays }
             
-            // Refreshes and watches for day changes 
+            // Refreshes and watches for day changes
             .onChange(of: date) {days = date.calendarDisplayDays}
         }
     }
@@ -68,6 +74,6 @@ struct CalendarView: View {
 
 struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarView()
+        CalendarView(date: Date(), contentViewModel: ContentViewModel())
     }
 }
