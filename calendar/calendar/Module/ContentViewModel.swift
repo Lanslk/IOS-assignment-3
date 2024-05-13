@@ -18,6 +18,10 @@ class ContentViewModel: ObservableObject {
     @Published var sevenDay: [Int] = Array(repeating: 0, count: 7)
     
     @Published var dayIndex: Int = 0
+    @Published var activities: [Activity] = []
+    @Published var selectedDate: Date = Date() // Today by default or could be set to a specific date
+
+
     
     var montDict : [String:Int] = ["Jan": 1, "Feb": 2, "Mar": 3, "Apr": 4, "May": 5, "Jun": 6, "Jul": 7, "Aug": 8, "Sep": 9, "Oct": 10, "Nov": 11, "Dec": 12]
     
@@ -79,5 +83,25 @@ class ContentViewModel: ObservableObject {
             renewCalendar(newDate: date)
         }
         
+    }
+    
+    func addActivity(name: String, date: Date, beginTime: Date, endTime: Date, alert: Bool, alertTime: Date, description: String) {
+        let newActivity = Activity()
+        newActivity.name = name
+        newActivity.date = date
+        newActivity.beginTime = beginTime
+        newActivity.endTime = endTime
+        newActivity.alert = alert
+        newActivity.alertTime = alertTime
+        newActivity.description = description
+        DispatchQueue.main.async {
+            self.activities.append(newActivity)
+        }
+    }
+
+    private func formatDate(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: date)
     }
 }

@@ -9,8 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var contentViewModel = ContentViewModel()
-    
     @StateObject var schedules = Schedule()
+    @State private var showAddTaskView = false
+
 
     var body: some View {
         NavigationView {
@@ -26,10 +27,13 @@ struct ContentView: View {
                                 .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)})
                                 .padding()
                     
-                    Button(){
-                        
+                    Button() {
+                        showAddTaskView = true
                     } label: {
                         Image(systemName: "plus")
+                    }
+                    .sheet(isPresented: $showAddTaskView) {
+                        AddTaskView(contentViewModel: contentViewModel, showAddTaskView: $showAddTaskView)
                     }
                 }
                 HStack {
@@ -71,24 +75,9 @@ struct ContentView: View {
                             .ignoresSafeArea()
                         ScrollView {
                             LazyVStack {
-                                ForEach(schedules.activities) { data in
-                                    if (data.dateString == contentViewModel.dateString) {
-                                        HStack {
-                                            Text(data.beginTime)
-                                            Text("-")
-                                            Text(data.endTime)
-                                            Spacer()
-                                            VStack {
-                                                Text(data.name)
-                                                HStack {
-                                                    Text("\(data.weather) \(data.temp) °C")
-                                                }
-                                            }
-                                            Spacer()
-                                            
-                                        }
-                                        .padding()
-                                        .foregroundColor(.white)
+                                ForEach(contentViewModel.activities) { activity in
+                                    if Calendar.current.isDate(activity.date, inSameDayAs: contentViewModel.date) {
+                                        TaskView(activity: activity)
                                     }
                                 }
                             }
@@ -99,12 +88,47 @@ struct ContentView: View {
             }
             .padding()
             .onAppear {
-                contentViewModel.renewCalendar(newDate:  contentViewModel.date)
+                contentViewModel.renewCalendar(newDate: contentViewModel.date)
             }
         }
         .navigationBarHidden(true)
     }
 }
+
+struct TaskView: View {
+    var activity: Activity
+
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text("Task: \(activity.name)")
+            Text("Date: \(activity.date, formatter: dateFormatter)")
+            Text("Starts: \(activity.beginTime, formatter: timeFormatter)")
+            Text("Ends: \(activity.endTime, formatter: timeFormatter)")
+            if activity.alert {
+                Text("Alert set for: \(activity.alertTime, formatter: timeFormatter)")
+            }
+            Text("Description: \(activity.description)")
+        }
+        .padding()
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color.blue.opacity(0.1))
+        .cornerRadius(10)
+    }
+}
+
+let dateFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .long
+    formatter.timeStyle = .none
+    return formatter
+}()
+
+let timeFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .none
+    formatter.timeStyle = .short
+    return formatter
+}()
 
 #Preview {
     ContentView()

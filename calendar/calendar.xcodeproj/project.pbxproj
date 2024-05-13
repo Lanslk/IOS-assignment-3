@@ -17,6 +17,7 @@
 		C7C8689D2BEAFA6F00E7D1C4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7C8689C2BEAFA6F00E7D1C4 /* Preview Assets.xcassets */; };
 		C7C868A62BEB03E900E7D1C4 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C868A52BEB03E900E7D1C4 /* ContentViewModel.swift */; };
 		C7C868AA2BEB7C0C00E7D1C4 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C868A92BEB7C0C00E7D1C4 /* Schedule.swift */; };
+		CFFB6F132BF192C600FA0F01 /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFB6F122BF192C600FA0F01 /* AddTaskView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		C7C8689C2BEAFA6F00E7D1C4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C7C868A52BEB03E900E7D1C4 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		C7C868A92BEB7C0C00E7D1C4 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		CFFB6F122BF192C600FA0F01 /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			children = (
 				C7761E8C2BF16D6D00B2295C /* CalendarView.swift */,
 				C7C868972BEAFA6D00E7D1C4 /* ContentView.swift */,
+				CFFB6F122BF192C600FA0F01 /* AddTaskView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 				C7761E8B2BEF3D6D00B2295C /* WeatherManager.swift in Sources */,
 				C7C868982BEAFA6D00E7D1C4 /* ContentView.swift in Sources */,
 				C7761E892BEF3D4000B2295C /* WeatherData.swift in Sources */,
+				CFFB6F132BF192C600FA0F01 /* AddTaskView.swift in Sources */,
 				C7C868962BEAFA6D00E7D1C4 /* calendarApp.swift in Sources */,
 				C7C868AA2BEB7C0C00E7D1C4 /* Schedule.swift in Sources */,
 				C7761E8F2BF16D7C00B2295C /* date+extension.swift in Sources */,
