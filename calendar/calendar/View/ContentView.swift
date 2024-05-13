@@ -23,9 +23,7 @@ struct ContentView: View {
                     NavigationLink(
                         destination: CalendarView(date: contentViewModel.date, contentViewModel: contentViewModel),
                         label: {
-                            Text("Calendar")
-                                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)})
-                                .padding()
+                            Image(systemName: "calendar")})
                     
                     Button() {
                         showAddTaskView = true
@@ -70,7 +68,7 @@ struct ContentView: View {
                 VStack {
                     ZStack {
                         RoundedRectangle(cornerRadius: 25.0)
-                            .fill(.black)
+                            .fill(.gray)
                             .opacity(0.6)
                             .ignoresSafeArea()
                         ScrollView {
@@ -101,13 +99,14 @@ struct TaskView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text("Task: \(activity.name)")
-            Text("Date: \(activity.date, formatter: dateFormatter)")
             Text("Starts: \(activity.beginTime, formatter: timeFormatter)")
             Text("Ends: \(activity.endTime, formatter: timeFormatter)")
             if activity.alert {
                 Text("Alert set for: \(activity.alertTime, formatter: timeFormatter)")
             }
             Text("Description: \(activity.description)")
+            Text("Weather: \(activity.weather)")
+            Text("Temperature: \(activity.temp) °C")
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)

@@ -27,5 +27,5 @@ struct Weather: Decodable {
 }
 
 struct WeatherDataShow {
-    var weatherDict: [String : [String : [String : Any]]] = [:]
+    var weatherDict: [String : [String : [String : String]]] = [:]
 }

@@ -20,6 +20,8 @@ class Activity: Identifiable {
     var description: String = ""
     var alert: Bool = false
     var alertTime: Date = Date()
+    var weather: String = ""
+    var temp: String = ""
     
     init() {}
 }

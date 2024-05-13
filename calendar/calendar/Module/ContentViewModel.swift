@@ -19,9 +19,6 @@ class ContentViewModel: ObservableObject {
     
     @Published var dayIndex: Int = 0
     @Published var activities: [Activity] = []
-    @Published var selectedDate: Date = Date() // Today by default or could be set to a specific date
-
-
     
     var montDict : [String:Int] = ["Jan": 1, "Feb": 2, "Mar": 3, "Apr": 4, "May": 5, "Jun": 6, "Jul": 7, "Aug": 8, "Sep": 9, "Oct": 10, "Nov": 11, "Dec": 12]
     
@@ -85,7 +82,7 @@ class ContentViewModel: ObservableObject {
         
     }
     
-    func addActivity(name: String, date: Date, beginTime: Date, endTime: Date, alert: Bool, alertTime: Date, description: String) {
+    func addActivity(name: String, date: Date, beginTime: Date, endTime: Date, alert: Bool, alertTime: Date, description: String, weather: String, temp: String) {
         let newActivity = Activity()
         newActivity.name = name
         newActivity.date = date
@@ -94,9 +91,13 @@ class ContentViewModel: ObservableObject {
         newActivity.alert = alert
         newActivity.alertTime = alertTime
         newActivity.description = description
+        newActivity.weather = weather
+        newActivity.temp = temp
         DispatchQueue.main.async {
             self.activities.append(newActivity)
         }
+        
+        
     }
 
     private func formatDate(date: Date) -> String {
