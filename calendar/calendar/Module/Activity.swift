@@ -6,22 +6,22 @@
 //
 
 import Foundation
+import SwiftData
 
-class Schedule: ObservableObject {
-    @Published var activities: [Activity] = []
-}
-
+@Model
 class Activity: Identifiable {
-    var id = UUID()
+    var id: String
     var date: Date = Date()  // Only the date part, no time
     var beginTime: Date = Date()
     var endTime: Date = Date()
     var name: String = ""
-    var description: String = ""
+    var taskDescription: String = ""
     var alert: Bool = false
     var alertTime: Date = Date()
     var weather: String = ""
     var temp: String = ""
     
-    init() {}
+    init() {
+        id = UUID().uuidString
+    }
 }

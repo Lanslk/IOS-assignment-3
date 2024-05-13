@@ -6,13 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
+    @Environment(\.modelContext) private var context
+    
     @StateObject var contentViewModel = ContentViewModel()
-    @StateObject var schedules = Schedule()
     @State private var showAddTaskView = false
-
-
+    
+    @Query(sort: \Activity.beginTime) var activities: [Activity]
     var body: some View {
         NavigationView {
             VStack {
@@ -73,7 +75,7 @@ struct ContentView: View {
                             .ignoresSafeArea()
                         ScrollView {
                             LazyVStack {
-                                ForEach(contentViewModel.activities) { activity in
+                                ForEach(activities) { activity in
                                     if Calendar.current.isDate(activity.date, inSameDayAs: contentViewModel.date) {
                                         TaskView(activity: activity)
                                     }
@@ -87,6 +89,7 @@ struct ContentView: View {
             .padding()
             .onAppear {
                 contentViewModel.renewCalendar(newDate: contentViewModel.date)
+                contentViewModel.context = context
             }
         }
         .navigationBarHidden(true)
@@ -94,19 +97,34 @@ struct ContentView: View {
 }
 
 struct TaskView: View {
+    @Environment(\.modelContext) private var context
     var activity: Activity
 
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("Task: \(activity.name)")
-            Text("Starts: \(activity.beginTime, formatter: timeFormatter)")
-            Text("Ends: \(activity.endTime, formatter: timeFormatter)")
-            if activity.alert {
-                Text("Alert set for: \(activity.alertTime, formatter: timeFormatter)")
+        HStack {
+            VStack(alignment: .leading) {
+                Text("Task: \(activity.name)")
+                Text("Starts: \(activity.beginTime, formatter: timeFormatter)")
+                Text("Ends: \(activity.endTime, formatter: timeFormatter)")
+                if activity.alert {
+                    Text("Alert set for: \(activity.alertTime, formatter: timeFormatter)")
+                }
+                Text("Description: \(activity.taskDescription)")
+                if activity.weather != "" {
+                    Text("Weather: \(activity.weather)")
+                }
+                if activity.temp != "" {
+                    Text("Temperature: \(activity.temp) °C")
+                }
             }
-            Text("Description: \(activity.description)")
-            Text("Weather: \(activity.weather)")
-            Text("Temperature: \(activity.temp) °C")
+            Spacer()
+            Button(){
+                context.delete(activity)
+            } label: {
+                Text("Delete")
+            }
+            
+            
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
