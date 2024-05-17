@@ -6,6 +6,12 @@ Yu-Teng Lan         (24906378)
 Soha Lee            (24882843)
 Mathew Blackwood    (25186267)
 
+Purpose: 
+
+This is an app developed for people who need to record their schedules.
+We offer uesrs to get instant weather information via API while adding appointments, this is to ensure users can easily plan their appointments whilst being aware of the weather. 
+
+
 Instructions: 
 
 1. Open app
@@ -22,10 +28,6 @@ Instructions:
 
 
 GitHub Link : https://github.com/Lanslk/IOS-assignment-3
-
-This is an app developed for people who need to record their schedules.
-We offer uesrs to get instant weather information via API while adding appointments, this is to ensure users can easily plan their appointments whilst being aware of the weather. 
-
 
 API information
 Source : https://openweathermap.org/api
