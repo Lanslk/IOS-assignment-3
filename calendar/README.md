@@ -8,8 +8,11 @@ Mathew Blackwood    (25186267)
 
 Purpose: 
 
-This is an app developed for people who need to record their schedules.
-We offer uesrs to get instant weather information via API while adding appointments, this is to ensure users can easily plan their appointments whilst being aware of the weather. 
+This is an app, designed for people who need to record their schedules.
+We offer users the ability to get instant weather information via API while adding appointments, this is to ensure users can easily plan their appointments whilst being aware of the weather. 
+
+Goal: 
+To create an app so easy to use - that people will know how to navigate through it even when accessing for the first time.
 
 
 Instructions: 
