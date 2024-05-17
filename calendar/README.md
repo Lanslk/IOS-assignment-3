@@ -21,7 +21,7 @@ Instructions:
 6. Select Start and Finish time
 7. Add an alert time if you want a reminder as well (Mainly for overlapping tasks where an alarm is needed to remind you to switch) 
 8. Add a task description 
-9. Select "Fetch Weather" - which will use a weather API - for most effective results, try within a week of the testing date.
+9. Select "Check Weather" - which will use a weather API - for most effective results, try within a week of the testing date.
 10. Click on create task
 11. Repeat the above steps twice more with different, as we've built in a function to order the tasks, and allow for overlap. 
 12. Once back in the main view - Select the Calendar icon
