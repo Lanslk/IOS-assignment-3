@@ -18,10 +18,10 @@ struct CalendarView: View {
     @State private var days: [Date] = []
     var body: some View {
         VStack {
-            LabeledContent("Calendar Color") {
+            LabeledContent("Show Some Style!") {
                 ColorPicker("", selection: $color, supportsOpacity: false)
             }
-            LabeledContent("Date/Time") {
+            LabeledContent("Date + Time") {
                 DatePicker("", selection: $date)
             }
             
