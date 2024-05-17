@@ -32,6 +32,7 @@ class ContentViewModel: ObservableObject {
     
     @Published var dateString: String = ""
     
+    // renew current date
     func renewCalendar(newDate: Date) {
         
         // Create a DateFormatter instance
@@ -50,6 +51,7 @@ class ContentViewModel: ObservableObject {
         getSevenDay()
     }
     
+    // get the dates of each seven weekdays
     func getSevenDay() {
         let numDays = getNumOfDays(year: Int(year)!, month: montDict[month]!)
         
@@ -68,6 +70,7 @@ class ContentViewModel: ObservableObject {
         }
     }
     
+    // get the number of days in the month & year
     func getNumOfDays(year :Int, month :Int) -> Int {
         let dateComponents = DateComponents(year: year, month: month)
         let calendar = Calendar.current
@@ -78,6 +81,7 @@ class ContentViewModel: ObservableObject {
         return numDays
     }
     
+    // add day to current date
     func addDay(days :Int) {
         if let date = Calendar.current.date(byAdding: .day, value: days, to: date) {
             self.date = date
@@ -86,6 +90,7 @@ class ContentViewModel: ObservableObject {
         
     }
     
+    // add activity and save it
     func addActivity(name: String, date: Date, beginTime: Date, endTime: Date, alert: Bool, alertTime: Date, description: String, weather: String, temp: String) {
         let newActivity = Activity()
         newActivity.name = name
@@ -98,11 +103,5 @@ class ContentViewModel: ObservableObject {
         newActivity.weather = weather
         newActivity.temp = temp
         context?.insert(newActivity)
-    }
-
-    private func formatDate(date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter.string(from: date)
     }
 }

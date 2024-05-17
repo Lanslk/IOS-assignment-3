@@ -16,6 +16,7 @@ class WeatherManager: ObservableObject {
     let weatherURL = "https://api.openweathermap.org/data/2.5/forecast"
     let YourAPIKey = "da61cd6f11a0042368ac1a0871cb006d"
     
+    // fetch weather via weather API
     func fetchWeather(cityName: String, date: Date, time: Date, completion: @escaping (Bool) -> Void) {
         let urlString = "\(weatherURL)?q=\(cityName)&appid=\(YourAPIKey)&units=metric"
         // convert to time and date String

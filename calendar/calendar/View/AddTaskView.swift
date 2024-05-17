@@ -35,7 +35,7 @@ struct AddTaskView: View {
                             print("success")
                         } else {
                             // Handle the case where the API call fails
-                            // call the API again
+                            // call the API again 1 more time
                             weatherManager.fetchWeather(cityName: "Sydney", date: taskDate, time: taskBeginTime) { success in
                                 if success {
                                     // The weather information is now available
