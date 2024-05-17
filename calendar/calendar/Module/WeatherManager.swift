@@ -27,7 +27,10 @@ class WeatherManager: ObservableObject {
         let dateString = dateFormatter.string(from: date)
         // Set the time format to HH:mm
         dateFormatter.dateFormat = "HH:mm"
-        let timeString = dateFormatter.string(from: time)
+        var timeString = dateFormatter.string(from: time)
+        if timeString > "22:00" {
+            timeString = "22:00"
+        }
         
         print("\(cityName) \(dateString) \(timeString)")
         
