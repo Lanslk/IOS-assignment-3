@@ -18,13 +18,15 @@ Instructions:
 2. Use the arrows to select a date that you want to create a task OR skip to next step
 4. Click on the "+" Symbol
 5. Add a task Name
-6. Select Start and finish time + Add an alert time if you want a reminder as well
-7. Add a task description 
-8. Select "Fetch Weather" - which will use a weather API - for most effective results, try within a week of the testing date.
-9. Click on create task
-10. Once back in the main view - Select the Calendar icon
-11. Customise if you want + Select the day you picked the task
-12. You will see all the tasks you set for that day - Note they are in a list and you can scroll through them as well. 
+6. Select Start and Finish time
+7. Add an alert time if you want a reminder as well (Mainly for overlapping tasks where an alarm is needed to remind you to switch) 
+8. Add a task description 
+9. Select "Fetch Weather" - which will use a weather API - for most effective results, try within a week of the testing date.
+10. Click on create task
+11. Repeat the above steps twice more with different, as we've built in a function to order the tasks, and allow for overlap. 
+12. Once back in the main view - Select the Calendar icon
+13. Customise if you want + Select the day you picked the task
+14. You will see all the tasks you set for that day - Note they are in a list and you can scroll through them as well. 
 
 
 GitHub Link : https://github.com/Lanslk/IOS-assignment-3
