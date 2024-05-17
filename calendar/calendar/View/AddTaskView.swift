@@ -19,7 +19,7 @@ struct AddTaskView: View {
             Form {
                 TextField("Task Name", text: $taskName)
                 DatePicker("Date", selection: $taskDate, displayedComponents: .date)
-                DatePicker("Begin Time", selection: $taskBeginTime, displayedComponents: .hourAndMinute)
+                DatePicker("Start Time", selection: $taskBeginTime, displayedComponents: .hourAndMinute)
                 DatePicker("End Time", selection: $taskEndTime, displayedComponents: .hourAndMinute)
                 Toggle("Set Alert", isOn: $taskAlert)
                 if taskAlert {
@@ -49,7 +49,7 @@ struct AddTaskView: View {
                         }
                     }
                 }) {
-                    Text("Fetch Weather")
+                    Text("Check Weather")
                 }
                 
                 HStack {
