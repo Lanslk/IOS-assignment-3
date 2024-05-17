@@ -18,12 +18,12 @@ Instructions:
 2. Use the arrows to select a date that you want to create a task OR skip to next step
 4. Click on the "+" Symbol
 5. Add a task Name
-6. Select Start and Finish time
+6. Select Start and Finish time (try 8am - 9:15am - then for the second task 6am-7am, and 1pm-3pm for the last one!)
 7. Add an alert time if you want a reminder as well (Mainly for overlapping tasks where an alarm is needed to remind you to switch) 
 8. Add a task description 
 9. Select "Check Weather" - which will use a weather API - for most effective results, try within a week of the testing date.
 10. Click on create task
-11. Repeat the above steps twice more with different, as we've built in a function to order the tasks, and allow for overlap. 
+11. Repeat the above steps twice more with different times set, as we've built in a function to order the tasks, and also allow for overlap whilst prioritising based on "Start Time". 
 12. Once back in the main view - Select the Calendar icon
 13. Customise if you want + Select the day you picked the task
 14. You will see all the tasks you set for that day - Note they are in a list and you can scroll through them as well. 
