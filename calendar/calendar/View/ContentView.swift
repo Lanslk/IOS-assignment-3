@@ -147,6 +147,19 @@ let timeFormatter: DateFormatter = {
     return formatter
 }()
 
+struct PreviewData {
+    static var container: ModelContainer = {
+        do {
+            // Replace ModelContainer() with actual initialization code and entities
+            let container = try ModelContainer(for: Activity.self)
+            return container
+        } catch {
+            fatalError("Failed to create ModelContainer: \(error)")
+        }
+    }()
+}
+
 #Preview {
     ContentView()
+        .environment(\.modelContext, PreviewData.container.mainContext)
 }

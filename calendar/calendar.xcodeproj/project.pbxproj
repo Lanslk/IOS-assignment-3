@@ -11,6 +11,7 @@
 		C7761E8B2BEF3D6D00B2295C /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7761E8A2BEF3D6D00B2295C /* WeatherManager.swift */; };
 		C7761E8D2BF16D6D00B2295C /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7761E8C2BF16D6D00B2295C /* CalendarView.swift */; };
 		C7761E8F2BF16D7C00B2295C /* date+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7761E8E2BF16D7C00B2295C /* date+extension.swift */; };
+		C7C84FCB2C16E66100405FF4 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C84FCA2C16E66100405FF4 /* LocationManager.swift */; };
 		C7C868962BEAFA6D00E7D1C4 /* calendarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C868952BEAFA6D00E7D1C4 /* calendarApp.swift */; };
 		C7C868982BEAFA6D00E7D1C4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C868972BEAFA6D00E7D1C4 /* ContentView.swift */; };
 		C7C8689A2BEAFA6F00E7D1C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7C868992BEAFA6F00E7D1C4 /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 		C7761E8A2BEF3D6D00B2295C /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		C7761E8C2BF16D6D00B2295C /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		C7761E8E2BF16D7C00B2295C /* date+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "date+extension.swift"; sourceTree = "<group>"; };
+		C7C84FCA2C16E66100405FF4 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		C7C868922BEAFA6D00E7D1C4 /* calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = calendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7C868952BEAFA6D00E7D1C4 /* calendarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendarApp.swift; sourceTree = "<group>"; };
 		C7C868972BEAFA6D00E7D1C4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				C7C868A52BEB03E900E7D1C4 /* ContentViewModel.swift */,
 				C7761E882BEF3D4000B2295C /* WeatherData.swift */,
 				C7761E8A2BEF3D6D00B2295C /* WeatherManager.swift */,
+				C7C84FCA2C16E66100405FF4 /* LocationManager.swift */,
 				C7C868A92BEB7C0C00E7D1C4 /* Activity.swift */,
 				C7761E8E2BF16D7C00B2295C /* date+extension.swift */,
 			);
@@ -176,6 +179,7 @@
 			files = (
 				C7761E8B2BEF3D6D00B2295C /* WeatherManager.swift in Sources */,
 				C7C868982BEAFA6D00E7D1C4 /* ContentView.swift in Sources */,
+				C7C84FCB2C16E66100405FF4 /* LocationManager.swift in Sources */,
 				C7761E892BEF3D4000B2295C /* WeatherData.swift in Sources */,
 				CFFB6F132BF192C600FA0F01 /* AddTaskView.swift in Sources */,
 				C7C868962BEAFA6D00E7D1C4 /* calendarApp.swift in Sources */,
@@ -319,6 +323,9 @@
 				DEVELOPMENT_TEAM = 4RG9MX354N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to provide weather information.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to provide weather information.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -348,6 +355,9 @@
 				DEVELOPMENT_TEAM = 4RG9MX354N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to provide weather information.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to provide weather information.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
