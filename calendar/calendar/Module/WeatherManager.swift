@@ -121,7 +121,8 @@ class WeatherManager: ObservableObject {
     }
     
     func getWeather(date: String, beginTime: String, endTime: String, completion: @escaping (Bool) -> Void) {
-        if let timeWeather = weatherDataShow.weatherDict[date]?.sorted(by: {$0.key < $1.key }) {
+        if let timeWeather = weatherDataShow.weatherDict[date] {
+            let times = ["01:00", "04:00", "07:00", "10:00", "13:00", "16:00", "19:00", "22:00"]
             let beginWeatherTime = closestTime(targetTime: beginTime)
             let endWeatherTime = closestTime(targetTime: endTime)
             
@@ -130,44 +131,55 @@ class WeatherManager: ObservableObject {
             var highTemp = ""
             var lowTemp = ""
             
-            for (key, value) in timeWeather {
-                if (key >= beginWeatherTime && key <= endWeatherTime) {
-                    if (beginWeather == "") {
+            guard let beginMinutes = minutesSinceMidnight(time: beginWeatherTime),
+                  let endMinutes = minutesSinceMidnight(time: endWeatherTime) else {
+                DispatchQueue.main.async {
+                    completion(false)
+                }
+                return
+            }
+            
+            for time in times {
+                guard let timeMinutes = minutesSinceMidnight(time: time) else { continue }
+                if timeMinutes >= beginMinutes && timeMinutes <= endMinutes, let value = timeWeather[time] {
+                    if beginWeather.isEmpty {
                         beginWeather = value["description"] ?? ""
                     }
                     endWeather = value["description"] ?? ""
                     
-                    if (highTemp == "") {
+                    if highTemp.isEmpty {
                         highTemp = value["temp"] ?? ""
                         lowTemp = value["temp"] ?? ""
                     }
                     
-                    if (highTemp < value["temp"] ?? "") {
+                    if highTemp < value["temp"] ?? "" {
                         highTemp = value["temp"] ?? ""
                     }
                     
-                    if (lowTemp > value["temp"] ?? "") {
+                    if lowTemp > value["temp"] ?? "" {
                         lowTemp = value["temp"] ?? ""
                     }
                     
-                    self.country = value["country"] ?? ""
-                    self.city = value["city"] ?? ""
-                    print("\(key): \(value)")
+                    DispatchQueue.main.async {
+                        self.country = value["country"] ?? ""
+                        self.city = value["city"] ?? ""
+                    }
+                    print("\(time): \(value)")
                 }
             }
             
-            if (beginWeather != endWeather) {
-                self.weather = beginWeather + " to " + endWeather
-            } else {
-                self.weather = beginWeather
-            }
-            
-            if (lowTemp != highTemp) {
-                self.temp = lowTemp + " to " + highTemp
-            } else {
-                self.temp = lowTemp
-            }
             DispatchQueue.main.async {
+                if (beginWeather != endWeather) {
+                    self.weather = beginWeather + " to " + endWeather
+                } else {
+                    self.weather = beginWeather
+                }
+                
+                if (lowTemp != highTemp) {
+                    self.temp = lowTemp + " to " + highTemp
+                } else {
+                    self.temp = lowTemp
+                }
                 completion(true)
             }
         } else {
@@ -184,7 +196,7 @@ class WeatherManager: ObservableObject {
     }
 
     func closestTime(targetTime: String) -> String {
-        let times = ["1:00", "4:00", "7:00", "10:00", "13:00", "16:00", "19:00", "22:00"]
+        let times = ["01:00", "04:00", "07:00", "10:00", "13:00", "16:00", "19:00", "22:00"]
         guard let targetMinutes = minutesSinceMidnight(time: targetTime) else { return "" }
         
         var closestTime: String = ""
