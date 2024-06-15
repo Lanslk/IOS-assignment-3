@@ -128,8 +128,23 @@ struct TaskView: View {
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color.blue.opacity(0.1))
-        .cornerRadius(10)
+        .background(backgroundImage(for: activity.weather))
+                .cornerRadius(10)
+            }
+    
+    private func backgroundImage(for weather:String) -> Image {
+        switch weather.lowercased() {
+        case "clear sky":
+                    return Image("clear_sky").resizable()
+                case "rainy":
+                    return Image("rainy").resizable()
+                case "cloudy":
+                    return Image("cloudy").resizable()
+                case "windy":
+                    return Image("windy").resizable()
+                default:
+                    return Image("default_background").resizable()
+                }
     }
 }
 
