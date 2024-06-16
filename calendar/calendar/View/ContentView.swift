@@ -133,19 +133,29 @@ struct TaskView: View {
             }
     
     private func backgroundImage(for weather:String) -> Image {
-        switch weather.lowercased() {
-        case "clear sky":
-                    return Image("clear_sky").resizable()
-                case "rainy":
-                    return Image("rainy").resizable()
-                case "cloudy":
-                    return Image("cloudy").resizable()
-                case "windy":
-                    return Image("windy").resizable()
-                default:
-                    return Image("default_background").resizable()
-                }
-    }
+            switch weather.lowercased() {
+                    case "clear_sky":
+                        return Image("clear_sky").resizable()
+                    case "few_clouds":
+                        return Image("few_clouds").resizable()
+                    case "scattered_clouds":
+                        return Image("scattered_clouds").resizable()
+                    case "broken_clouds":
+                        return Image("broken_clouds").resizable()
+                    case "shower_rain":
+                        return Image("shower_rain").resizable()
+                    case "rain":
+                        return Image("rain").resizable()
+                    case "thunderstorm":
+                        return Image("thunderstorm").resizable()
+                    case "snow":
+                        return Image("snow").resizable()
+                    case "mist":
+                        return Image("mist").resizable()
+                    default:
+                        return Image("default_background").resizable()
+            }
+        }
 }
 
 let dateFormatter: DateFormatter = {
