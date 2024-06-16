@@ -46,11 +46,21 @@ struct AddTaskView: View {
                         .multilineTextAlignment(.trailing)
                 }
                 Button(action: {
-                    
+                    if taskBeginTime > taskEndTime {
+                        weatherManager.weather = ""
+                        weatherManager.temp = ""
+                        showingAlertCheckWeather = true
+                        alertCheckWeatherContent = "Start time > End Time!"
+                        return
+                    }
                     // Call the fetchWeather function with a completion handler
                     weatherManager.fetchWeather(isCurrentLocation: currentLocation, country: weatherManager.country, cityName: weatherManager.city, date: taskDate, beginTime: taskBeginTime, endTime: taskEndTime) { success in
                         if success {
                             // The weather information is now available
+                            if (weatherManager.weather == "") {
+                                showingAlertCheckWeather = true
+                                alertCheckWeatherContent = "Can't get the weather forecast at the location and time"
+                            }
                             print("success")
                         } else {
                             // Handle the case where the API call fails
@@ -59,13 +69,17 @@ struct AddTaskView: View {
                                 if success {
                                     // The weather information is now available
                                     // You can update any UI components here if needed
+                                    if (weatherManager.weather == "") {
+                                        showingAlertCheckWeather = true
+                                        alertCheckWeatherContent = "Can't get the weather forecast at the location and time"
+                                    }
                                     print("success")
                                 } else {
                                     // Handle the case where the API call fails
                                     weatherManager.weather = ""
                                     weatherManager.temp = ""
                                     showingAlertCheckWeather = true
-                                    alertCheckWeatherContent = "Can't find the weather at the location"
+                                    alertCheckWeatherContent = "Can't get the weather forecast at the location and time"
                                     print("fail")
                                 }
                             }

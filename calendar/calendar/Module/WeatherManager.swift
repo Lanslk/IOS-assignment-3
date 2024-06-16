@@ -164,7 +164,7 @@ class WeatherManager: ObservableObject {
                         self.country = value["country"] ?? ""
                         self.city = value["city"] ?? ""
                     }
-                    print("\(time): \(value)")
+                    print("weather:\(time): \(value)")
                 }
             }
             
