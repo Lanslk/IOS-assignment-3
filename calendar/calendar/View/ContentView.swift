@@ -134,15 +134,15 @@ struct TaskView: View {
     
     private func backgroundImage(for weather:String) -> Image {
             switch weather.lowercased() {
-                    case "clear_sky":
+                    case "clear sky":
                         return Image("clear_sky").resizable()
-                    case "few_clouds":
+                    case "few clouds":
                         return Image("few_clouds").resizable()
-                    case "scattered_clouds":
+                    case "scattered clouds":
                         return Image("scattered_clouds").resizable()
-                    case "broken_clouds":
+                    case "broken clouds":
                         return Image("broken_clouds").resizable()
-                    case "shower_rain":
+                    case "shower rain":
                         return Image("shower_rain").resizable()
                     case "rain":
                         return Image("rain").resizable()
