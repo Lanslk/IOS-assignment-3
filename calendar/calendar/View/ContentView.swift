@@ -161,26 +161,37 @@ struct TaskView: View {
 
     private func image(for weather: String) -> Image {
         switch weather {
+            
             case "clear sky":
                 return Image("clear_sky")
+            
             case "few clouds":
                 return Image("few_clouds")
+            
             case "scattered clouds":
                 return Image("scattered_clouds")
+            
             case "broken clouds":
                 return Image("broken_clouds")
+            
             case "overcast clouds":
             return Image("overcast_clouds")
-            case "shower rain":
+            
+            case "shower rain", "light intensity drizzle", "drizzle", "heavy intensity drizzle", "light intensity drizzle rain", "drizzle rain", "heavy intensity drizzle rain", "shower rain and drizzle", "heavy shower rain and drizzle", "shower drizzle":
                 return Image("shower_rain")
-            case "rain":
+            
+            case "rain", "light rain", "moderate rain", "heavy intensity rain", "very heavy rain", "extreme rain", "freezing rain", "light intensity shower rain", "heavy intensity shower rain", "ragged shower rain":
                 return Image("rain")
-            case "thunderstorm":
+            
+            case "thunderstorm", "thunderstorm with light rain", "thunderstorm with rain", "thunderstorm with heavy rain", "light thunderstorm", "heavy thunderstorm", "ragged thunderstorm", "thunderstorm with light drizzle", "thunderstorm with drizzle", "thunderstorm with heavy drizzle":
                 return Image("thunderstorm")
-            case "snow":
-                return Image("snow")
-            case "mist":
-                return Image("mist")
+            
+            case "snow", "heavy snow", "sleet", "light shower sleet", "shower sleet", "light rain and snow", "rain and snow", "light shower snow", "shower snow", "heavy shower snow":
+                    return Image("snow");
+            
+            case "mist", "smoke", "haze", "sand/dust whirls", "fog", "sand", "dust", "volcanic ash", "squalls", "tornado":
+                    return Image("mist");
+            
             default:
                 return Image("default_background")
         }
