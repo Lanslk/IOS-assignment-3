@@ -123,40 +123,89 @@ struct TaskView: View {
             } label: {
                 Text("Delete")
             }
-            
-            
         }
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(backgroundImage(for: activity.weather))
-                .cornerRadius(10)
+        .background(
+            GeometryReader { geometry in
+                backgroundImage(for: activity.weather, size: geometry.size)
             }
-    
-    private func backgroundImage(for weather:String) -> Image {
-            switch weather.lowercased() {
-                    case "clear sky":
-                        return Image("clear_sky").resizable()
-                    case "few clouds":
-                        return Image("few_clouds").resizable()
-                    case "scattered clouds":
-                        return Image("scattered_clouds").resizable()
-                    case "broken clouds":
-                        return Image("broken_clouds").resizable()
-                    case "shower rain":
-                        return Image("shower_rain").resizable()
-                    case "rain":
-                        return Image("rain").resizable()
-                    case "thunderstorm":
-                        return Image("thunderstorm").resizable()
-                    case "snow":
-                        return Image("snow").resizable()
-                    case "mist":
-                        return Image("mist").resizable()
-                    default:
-                        return Image("default_background").resizable()
+        )
+        .cornerRadius(10)
+    }
+
+    private func backgroundImage(for weather: String, size: CGSize) -> some View {
+        let weatherComponents = weather.lowercased().split(separator: " to ").map { String($0) }
+        
+        return ZStack {
+            if weatherComponents.count == 2 {
+                let firstWeatherImage = image(for: weatherComponents[0])
+                let secondWeatherImage = image(for: weatherComponents[1])
+                
+                firstWeatherImage
+                    .resizable()
+                    .frame(width: size.width, height: size.height)
+                    .clipShape(DiagonalSplitShape(isLeft: true))
+                secondWeatherImage
+                    .resizable()
+                    .frame(width: size.width, height: size.height)
+                    .clipShape(DiagonalSplitShape(isLeft: false))
+            } else {
+                let weatherImage = image(for: weather)
+                weatherImage
+                    .resizable()
+                    .frame(width: size.width, height: size.height)
             }
         }
+    }
+
+    private func image(for weather: String) -> Image {
+        switch weather {
+            case "clear sky":
+                return Image("clear_sky")
+            case "few clouds":
+                return Image("few_clouds")
+            case "scattered clouds":
+                return Image("scattered_clouds")
+            case "broken clouds":
+                return Image("broken_clouds")
+            case "overcast clouds":
+            return Image("overcast_clouds")
+            case "shower rain":
+                return Image("shower_rain")
+            case "rain":
+                return Image("rain")
+            case "thunderstorm":
+                return Image("thunderstorm")
+            case "snow":
+                return Image("snow")
+            case "mist":
+                return Image("mist")
+            default:
+                return Image("default_background")
+        }
+    }
 }
+
+struct DiagonalSplitShape: Shape {
+    var isLeft: Bool
+
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        if isLeft {
+            path.move(to: CGPoint(x: 0, y: 0))
+            path.addLine(to: CGPoint(x: rect.maxX, y: 0))
+            path.addLine(to: CGPoint(x: 0, y: rect.maxY))
+        } else {
+            path.move(to: CGPoint(x: rect.maxX, y: 0))
+            path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
+            path.addLine(to: CGPoint(x: 0, y: rect.maxY))
+        }
+        path.closeSubpath()
+        return path
+    }
+}
+
 
 let dateFormatter: DateFormatter = {
     let formatter = DateFormatter()
