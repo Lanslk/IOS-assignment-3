@@ -76,23 +76,31 @@ class WeatherManager: ObservableObject {
                     return
                 }
                 if let safeData = data {
-                    self.parseJSON(weatherData: safeData)
-                    self.toWeatherDataShow()
-                    self.getWeather(date: date, beginTime: beginTime, endTime: endTime, completion: completion)
+                    if self.parseJSON(weatherData: safeData) {
+                        self.toWeatherDataShow()
+                        self.getWeather(date: date, beginTime: beginTime, endTime: endTime, completion: completion)
+                    } else {
+                        self.weather = ""
+                        self.temp = ""
+                        completion(false)
+                        return
+                    }
                 }
             }
             task.resume()
         }
     }
     
-    func parseJSON(weatherData: Data) {
+    func parseJSON(weatherData: Data) -> Bool {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
             self.weatherData = decodedData
         } catch {
             print(error)
+            return false
         }
+        return true
     }
     
     func toWeatherDataShow() {
