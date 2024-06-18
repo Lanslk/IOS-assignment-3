@@ -20,6 +20,8 @@ class WeatherManager: ObservableObject {
     
     let weatherURL = "https://api.openweathermap.org/data/2.5/forecast"
     let YourAPIKey = "69be889a06af3b0f74fafe3a7c69dbce"
+    
+    var dateString = ""
     // fetch weather via weather API
     func fetchWeather(isCurrentLocation: Bool, country: String, cityName: String, date: Date, beginTime: Date, endTime: Date, completion: @escaping (Bool) -> Void) {
 	        var urlString = "\(weatherURL)?"
@@ -47,20 +49,22 @@ class WeatherManager: ObservableObject {
         let dateFormatter = DateFormatter()
         // Set the date format to YYYY:MM:DD
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        var dateString = dateFormatter.string(from: date)
+        dateString = dateFormatter.string(from: date)
         // Set the time format to HH:mm
         dateFormatter.dateFormat = "HH:mm"
         var timeString = dateFormatter.string(from: beginTime)
+        var endTimeString = dateFormatter.string(from: endTime)
         if timeString > "22:00" {
             timeString = "22:00"
             dateFormatter.dateFormat = "yyyy-MM-dd"
             if dateString == dateFormatter.string(from: Date.now) {
                 dateString = dateFormatter.string(from: Calendar.current.date(byAdding: .day, value: 1, to: date) ?? Date.now)
                 timeString = "01:00"
+                endTimeString = "01:00"
             }
         }
         
-        let endTimeString = dateFormatter.string(from: endTime)
+        
         print("\(urlString) \(dateString) \(timeString)")
         
         performRequest(urlString: urlString, date: dateString, beginTime: timeString, endTime: endTimeString, completion: completion)
